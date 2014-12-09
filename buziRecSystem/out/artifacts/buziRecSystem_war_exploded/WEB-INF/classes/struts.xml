@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+<!--        <package name="struts2" extends="struts-default">
+                <action name="dataQuery" class="edu.zju.brs.action.DataQueryAction">
+                        <result name="success">/index.jsp</result>
+                </action>
+        </package>
+-->
+
+
+        <package name="ajax" extends="struts-default">
+                <result-types>
+                        <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+                </result-types>
+                <action name="queryLocation"  class="edu.zju.brs.action.QueryLocationAction" method="queryMapPoints">
+                        <result type="json">
+                                <!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result
+                                      注意：root为固定写法，否则不会把result的值返回给客户端 -->
+                                <param name="root">lists</param>
+                        </result>
+                </action>
+                <action name="queryKeyword"  class="edu.zju.brs.action.QueryKeywordAction" method="queryShopByKeyword">
+                        <result type="json">
+                                <param name="root">lists</param>
+                        </result>
+                </action>
+        </package>
+
+
+</struts>
